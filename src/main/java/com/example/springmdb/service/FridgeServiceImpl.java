@@ -4,10 +4,12 @@ import com.example.springmdb.model.Fridge;
 import com.example.springmdb.repository.FridgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -36,5 +38,13 @@ public class FridgeServiceImpl implements FridgeService {
     @Override
     public void deleteFridgeById(Long id) {
         fridgeRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateFridge(Long id, Fridge fridgeNew){
+        Fridge fridgeOld = fridgeRepository.getFridgeById(id);
+        fridgeOld.setName(fridgeNew.getName());
+        fridgeOld.setIsFreezer(fridgeNew.getIsFreezer());
+        fridgeRepository.save(fridgeOld);
     }
 }

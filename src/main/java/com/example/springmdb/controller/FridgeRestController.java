@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/fridge")
@@ -37,6 +38,24 @@ public class FridgeRestController {
     public ResponseEntity<?> deleteFridgeById(@PathVariable long fridgeId) {
         fridgeService.deleteFridgeById(fridgeService.getFridgeById(fridgeId).getId());
         return new ResponseEntity<>("Fridge deleted successfully", HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/update/{fridgeId}")
+    public ResponseEntity<?> updateFridge(@PathVariable long fridgeId, @RequestBody Fridge fridge){
+        Fridge fridgeOld = fridgeService.getFridgeById(fridgeId);
+        if(fridgeOld == null){
+            return new ResponseEntity<>(
+                    "Fridge not found",
+                    HttpStatus.BAD_REQUEST
+            );
+        }
+
+        fridgeService.updateFridge(fridgeId, fridge);
+
+        return new ResponseEntity<>(
+                "Fridge Successfully Updated",
+                HttpStatus.OK
+        );
     }
 
 }
