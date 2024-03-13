@@ -29,6 +29,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public Product getProductById(Long productId){
+        Product product = productRepository.getProductById(productId);
+        if (product == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product with given id " + productId + " does not exist");
+        return product;
+    }
+
+    @Override
     public List<Product> getProductsByFridge(Long fridgeId) {
         Query query = new Query();
         query.addCriteria(Criteria.where("fridgeId").is(fridgeId));

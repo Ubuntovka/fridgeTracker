@@ -9,34 +9,35 @@ import java.time.LocalDate;
 public class Product {
 
     @Id
-    private String id;
-    private Fridge fridgeId;
+    private Long id;
+    private Long fridgeId;
     private String productName;
-    private LocalDate expiredDate;
-    private final LocalDate purchaseDate;
+    private String expiredDate;
+    private LocalDate purchaseDate;
     private String storeName;
 
-    public Product(String id, Fridge fridgeId, String productName, LocalDate expiredDate, String storeName) {
+    public Product(Long id, Long fridgeId, String productName, String expiredDate, String storeName) {
         super();
         this.id = id;
         this.fridgeId = fridgeId;
         this.productName = productName;
+//        this.expiredDate = LocalDate.parse(expiredDate);
         this.expiredDate = expiredDate;
         this.purchaseDate = LocalDate.now();
         this.storeName = storeName;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Fridge getFridgeId(){
+    public Long getFridgeId(){
         return fridgeId;
     }
-     public void setFridgeId(Fridge fridgeId){
+     public void setFridgeId(Long fridgeId){
         this.fridgeId = fridgeId;
      }
 
@@ -47,15 +48,19 @@ public class Product {
         this.productName = productName;
     }
 
-    public LocalDate getExpiredDate() {
+    public String getExpiredDate() {
         return expiredDate;
     }
-    public void setExpiredDate(LocalDate expiredDate) {
+    public void setExpiredDate(String expiredDate) {
         this.expiredDate = expiredDate;
     }
 
     public LocalDate getPurchaseDate() {
         return purchaseDate;
+    }
+
+    public void setPurchaseDate(){
+        this.purchaseDate = LocalDate.now();
     }
 
     public String getStoreName() {

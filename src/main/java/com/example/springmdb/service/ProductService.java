@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface ProductService {
     List<Product> getProducts();
+
+    Product getProductById(Long productId);
+
     List<Product> getProductsByFridge(Long productId);
 
     Product saveProduct(Product product);
