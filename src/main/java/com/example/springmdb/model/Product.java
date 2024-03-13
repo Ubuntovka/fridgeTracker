@@ -10,16 +10,16 @@ public class Product {
 
     @Id
     private String id;
-    private Fridge fridge;
+    private Fridge fridgeId;
     private String productName;
     private LocalDate expiredDate;
     private final LocalDate purchaseDate;
     private String storeName;
 
-    public Product(String id, Fridge fridge, String productName, LocalDate expiredDate, String storeName) {
+    public Product(String id, Fridge fridgeId, String productName, LocalDate expiredDate, String storeName) {
         super();
         this.id = id;
-        this.fridge = fridge;
+        this.fridgeId = fridgeId;
         this.productName = productName;
         this.expiredDate = expiredDate;
         this.purchaseDate = LocalDate.now();
@@ -33,11 +33,11 @@ public class Product {
         this.id = id;
     }
 
-    public Fridge getFridge(){
-        return fridge;
+    public Fridge getFridgeId(){
+        return fridgeId;
     }
-     public void setFridge(Fridge fridge){
-        this.fridge = fridge;
+     public void setFridgeId(Fridge fridgeId){
+        this.fridgeId = fridgeId;
      }
 
     public String getProductName() {
@@ -57,10 +57,6 @@ public class Product {
     public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
-
-//    public void setPurchaseDate(LocalDate purchaseDate) {
-//        this.purchaseDate = purchaseDate;
-//    }
 
     public String getStoreName() {
         return storeName;
